@@ -1,0 +1,123 @@
+<div class="data" role="main">
+  <h2> {{title}} </h2>
+  </div>
+   
+
+  <div class="container-fluid" mb-5>
+      <h3> Add Employee </h3> <br/>
+<!-- {{registrationForm.value | json}} -->
+
+
+
+   
+      <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()" >
+
+      
+              <div class="form-group col-lg">
+                 <label for="tname"> Title <strong class="text-danger">*</strong> </label> &nbsp;
+                <select [class.is-invalid]="registrationForm.get('tname').invalid &&
+                                      registrationForm.get('tname').touched" class="for-control" id="tname" formControlName="tname">
+                <option value="Mr"> Mr. </option>
+               <option value="Mrs"> Mrs. </option>
+               <option value="Ms"> Ms. </option>
+               <option value="Dr"> Dr. </option>
+               </select>  <br/>
+                <small [class.d-none]="registrationForm.get('tname').valid ||
+                    registrationForm.get('tname').untouched" class="text-danger">Title is  required</small>
+               </div>
+  
+              <div class="form-group col-lg-2">
+        <label> Full Name </label><strong class="text-danger">*</strong>
+        <input [class.is-invalid]="registrationForm.get('fullName').invalid &&
+                                   registrationForm.get('fullName').touched"  formControlName="fullName" name="fullName" type="text" class="form-control">
+     <small [class.d-none]="registrationForm.get('fullName').valid ||
+                            registrationForm.get('fullName').untouched" class="text-danger">Name is  required</small>
+              </div>
+
+              <div class="form-group col-lg-2">
+        <label> Email ID </label> <strong class="text-danger">*</strong>
+        <input [class.is-invalid]="registrationForm.get('email').invalid &&
+                                   registrationForm.get('email').touched " formControlName="email" id="email" type="email" class="form-control">
+        <small [class.d-none]="registrationForm.get('email').valid ||
+                               registrationForm.get('email').untouched" class="text-danger"> Valid email is required</small>
+              </div>
+      
+      
+      <div class="form-group col-lg-2">
+        <label> Mobile No. </label> <strong class="text-danger">*</strong>
+        <input [class.is-invalid]="registrationForm.get('mobile').invalid &&
+                                   registrationForm.get('mobile').touched " pattern="^\d{10}$" formControlName="mobile" type="tel" class="form-control" >
+        <small [class.d-none]="registrationForm.get('mobile').valid ||
+                               registrationForm.get('mobile').untouched " class="text-danger">Mobile number required and must be 10 digits </small>
+      </div>
+     
+      <div class="form-group-inline col-lg-5">
+        <label> Sex  </label> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+       
+        <div class="form-check-inline">
+          <input formControlName="sex" class="form-check-input" type="radio" name="sex" value="Male">
+          <label class="form-check-label"> Male </label> 
+          </div>
+
+          <div class="form-check-inline">
+            <input formControlName="sex" class="form-check-input" type="radio" name="sex" value="Female">
+            <label class="form-check-label"> Female </label>
+          </div>
+      </div>  
+      
+      
+      <div class="form-group col-lg-2">
+        <label>Message</label>
+        <textarea formControlName="msg" class="form-control" rows="3"></textarea>
+      </div>
+
+      <div class="form-check mb-3">
+        <input formControlName="term" class="form-check-input" type="checkbox">
+        <label class="form-check-label" >I Accept terms and condition </label>
+      </div>
+      
+    
+
+      <button class="btn btn-primary" type="submit">Add Employee</button>
+  </form>
+
+ 
+<br/>
+<div class="container"  >
+
+
+  <table style="text-align: center;">
+   
+    <thead>
+        <tr>
+            <th scope="col">Title</th>
+            <th scope="col">Fullname</th>
+            <th scope="col">Email</th>
+            <th scope="col">Mobile</th>
+            <th scope="col">Sex</th>
+            <th scope="col">Message</th>
+            <th scope="col">Terms & Condition</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">{{tname.value}} </th>
+            <th scope="row">{{fullName.value}} </th>
+            <th scope="row">{{email.value}} </th>
+            <th scope="row">{{mobile.value}} </th>
+            <th scope="row">{{sex.value}} </th>
+            <th scope="row">{{msg.value}} </th>
+            <th scope="row">{{term.value}} </th>
+           
+        </tr>
+       
+    </tbody>
+</table>
+
+
+
+</div>
+
+
+</div>
